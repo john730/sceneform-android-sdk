@@ -137,7 +137,7 @@ public class TranslationController extends BaseTransformationController<DragGest
       Pose pose = hit.getHitPose();
       if (trackable instanceof Plane) {
         Plane plane = (Plane) trackable;
-        if (allowedPlaneTypes.contains(plane.getType())) {
+        if (plane.isPoseInPolygon(pose) && allowedPlaneTypes.contains(plane.getType())) {
           desiredLocalPosition = new Vector3(pose.tx(), pose.ty(), pose.tz());
           desiredLocalRotation = new Quaternion(pose.qx(), pose.qy(), pose.qz(), pose.qw());
           Node parent = getTransformableNode().getParent();
